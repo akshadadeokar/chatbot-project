@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Q&A Forum</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><h2>RoboAnalyzer Q&A Forum</h2></header>
+    <section>
+        <div>
+            <input type="text" id="questionInput" placeholder="Ask a question..." style="width:80%;" />
+            <button onclick="postQuestion()">Post</button>
+        </div>
+        <ul id="questionsList" style="margin-top:20px;"></ul>
+    </section>
+    <script>
+        const questions = [];
+        function postQuestion() {
+            const question = document.getElementById('questionInput').value.trim();
+            if (!question) return;
+            questions.push(question);
+            document.getElementById('questionInput').value = "";
+            renderQuestions();
+        }
+        function renderQuestions() {
+            const list = document.getElementById('questionsList');
+            list.innerHTML = "";
+            questions.forEach((q, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = "<b>Q" + (index + 1) + ":</b> " + q;
+                list.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>

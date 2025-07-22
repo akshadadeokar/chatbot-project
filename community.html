@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Community Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><h2>Community Chat Room</h2></header>
+    <section>
+        <div id="chatbox" style="height:300px; overflow-y:auto; border:1px solid #ccc; padding:10px;"></div>
+        <input type="text" id="chatInput" placeholder="Type your message..." style="width:80%;" />
+        <button onclick="sendChat()">Send</button>
+    </section>
+    <script>
+        const chatbox = document.getElementById('chatbox');
+        function sendChat() {
+            const input = document.getElementById('chatInput').value;
+            if (!input.trim()) return;
+            chatbox.innerHTML += "<div><b>You:</b> " + input + "</div>";
+            document.getElementById('chatInput').value = "";
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+    </script>
+</body>
+</html>
